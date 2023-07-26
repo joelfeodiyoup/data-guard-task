@@ -8,6 +8,12 @@
         (e: 'update:pluginActiveStateChanged', value: boolean): void
     }>();
 
+    const allDisabled = useDisableAllPlugins();
+
+    function updatePluginActiveState(isActive: boolean) {
+        emit('update:pluginActiveStateChanged', isActive);
+    }
+
     // I'm setting some state here locally, to reference this instead of the props.
     // Better would be, when these values change, send them to the parent,
     // who then sends them back down as props.
@@ -18,7 +24,7 @@
     let pluginDisplay = useState(`plugin-${Math.random() * 1000}`, () => props.plugin);
 </script>
 <template>
-    <section :class="`plugin`">
+    <section :class="`plugin ${(pluginDisplay.disabled || allDisabled) ? 'disabled' : ''}`">
         <div>
             <h3>{{ pluginDisplay.title }}</h3>
             <p>{{ pluginDisplay.description }}</p>
@@ -26,10 +32,11 @@
         <div>
             <Checkbox
                 :modelValue="pluginDisplay.active ?? false"
-                :disabled="pluginDisplay.disabled"
-                @update:modelValue="newValue=> {
-
-                }"
+                :disabled="allDisabled || pluginDisplay.disabled"
+                @update:modelValue="newValue => {
+                    pluginDisplay = {...pluginDisplay, active: Boolean(newValue)}
+                    updatePluginActiveState(Boolean(newValue));
+                    }"
             ></Checkbox>
             <p :class="pluginDisplay.active ? 'success' : 'error'">
                 {{  pluginDisplay.active ? 'Allowed' : 'Blocked' }}
