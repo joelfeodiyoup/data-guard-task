@@ -9,6 +9,7 @@
             @update:modelValue="newValue => {
                 allDisabled = !newValue}"
         >
+            <Icon name="eos-icons:node-outlined" />
         </Checkbox>
     </p>
 </template>

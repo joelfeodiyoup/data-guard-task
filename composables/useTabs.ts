@@ -14,6 +14,7 @@ export const useTabs = () => {
                     tab.title.toLowerCase() as string,
                     {
                         ...tab,
+                        icon: useIconConverter(tab.icon) ?? ''
                     }
                 ])
             })
