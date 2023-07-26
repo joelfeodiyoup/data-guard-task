@@ -5,6 +5,11 @@ export type Tab = {
     disabled: string[],
     inactive: string[],
 }
+
+/**
+ * Fetches tabs from server
+ * @returns 
+ */
 export const useTabs = () => {
     const {data} = useFetch('/api/tabs');
     const x = (Object.values(data.value ?? {}) as Tab[]);
