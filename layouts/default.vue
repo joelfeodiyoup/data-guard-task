@@ -18,6 +18,7 @@
                     </NuxtLink>
                 </li>
             </menu>
+            <DisableAll></DisableAll>
         </aside>
         <main>
             <slot />
