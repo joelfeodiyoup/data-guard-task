@@ -1,4 +1,9 @@
+@use "./reset.scss";
 @use "./checkbox.scss";
+@use "./plugin.scss";
+@use "./grid.scss";
+@use "./layout.scss";
+@use "./typography.scss";
 
 :root {
     --error: #C63040;
