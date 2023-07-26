@@ -19,6 +19,21 @@
 </script>
 <template>
     <section :class="`plugin`">
-        <h3>{{ pluginDisplay.title }}</h3>
+        <div>
+            <h3>{{ pluginDisplay.title }}</h3>
+            <p>{{ pluginDisplay.description }}</p>
+        </div>
+        <div>
+            <Checkbox
+                :modelValue="pluginDisplay.active ?? false"
+                :disabled="pluginDisplay.disabled"
+                @update:modelValue="newValue=> {
+
+                }"
+            ></Checkbox>
+            <p :class="pluginDisplay.active ? 'success' : 'error'">
+                {{  pluginDisplay.active ? 'Allowed' : 'Blocked' }}
+            </p>
+        </div>
     </section>
 </template>

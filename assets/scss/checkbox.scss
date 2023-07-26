@@ -1,0 +1,61 @@
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+
+    input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+        &:checked ~ .slider-button {
+            transform: translateX(26px);
+            color: var(--success, "green");
+        }
+        &:checked + .slider {
+            background-color: var(--success, "green");
+        }
+        // unchecked, and disabled => light red
+        &:disabled + .slider {
+            background-color: var(--light-red, "red");
+        }
+        &:disabled {
+            + .slider, ~ .slider-button {
+                cursor: not-allowed;
+                color: var(--light-green, "green");
+            }
+        }
+        &:checked:disabled + .slider {
+            background-color: var(--light-green, "green");
+        }
+    }
+}
+.slider, .slider-button {
+    cursor: pointer;
+}
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--error, "red");
+    transition: .4s;
+    border-radius: 34px;
+}
+.slider-button {
+    color: var(--error, "red");
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

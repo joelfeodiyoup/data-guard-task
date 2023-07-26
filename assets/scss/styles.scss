@@ -1,0 +1,21 @@
+@use "./checkbox.scss";
+
+:root {
+    --error: #C63040;
+    // I think it can be better to break these apart into hsl values,
+    // then you can programmatically modify the lightness
+    // But I don't want to spend too much time on it.
+    --light-red: #DA8A93;
+    --success: #5BC88D;
+    --light-green: #9CDAB8;
+}
+
+.success {
+    color: var(--success);
+}
+.error {
+    color: var(--error);
+}
+body {
+    font-family: sans-serif;
+}
